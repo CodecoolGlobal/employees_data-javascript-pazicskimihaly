@@ -32,7 +32,7 @@ const EmployeeTable = ({ employees, onDelete }) => (
                     <Button variant="outlined">Update</Button>
                   </Link>
                   <Button
-                    onClick={() => onDelete(employee._id)}
+                    onClick={() => {if (window.confirm("Would you like to delete this employee?")){onDelete(employee._id)}else{window.alert("Cancelled")}}}
                     startIcon={<DeleteIcon />}
                     variant="outlined"
                     color="warning"
