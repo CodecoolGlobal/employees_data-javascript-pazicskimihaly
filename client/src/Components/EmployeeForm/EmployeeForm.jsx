@@ -58,6 +58,49 @@ const EmployeeForm = ({ onSave, disabled, employee, onCancel }) => {
         />
       </FormControl>
 
+      <FormControl fullWidth>
+        <TextField
+          defaultValue={employee ? employee.startingDate : null}
+          type="date"
+          name="startingDate"
+          id="startingDate"
+          label="Starting Date"
+          variant="outlined"
+        />
+      </FormControl>
+
+      <FormControl fullWidth>
+        <TextField
+          defaultValue={employee ? employee.favouriteColor : null}
+          name="favouriteColor"
+          id="favouriteColor"
+          label="Favourite Color"
+          variant="outlined"
+        />
+      </FormControl>
+
+      <FormControl fullWidth>
+        <TextField
+          defaultValue={employee ? employee.startingSalary : null}
+          type="number"
+          name="startingSalary"
+          id="startingSalary"
+          label="Starting Salary"
+          variant="outlined"
+        />
+      </FormControl>
+
+      <FormControl fullWidth>
+        <TextField
+          defaultValue={employee ? employee.desiredSalary : null}
+          type="number"
+          name="desiredSalary"
+          id="desiredSalary"
+          label="Desired Salary"
+          variant="outlined"
+        />
+      </FormControl>
+
       <div>
         <Button
           sx={{ marginRight: "1rem" }}

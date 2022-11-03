@@ -17,6 +17,11 @@ const EmployeeTable = ({ employees, onDelete }) => (
           <TableCell align="left">Name</TableCell>
           <TableCell align="left">Level</TableCell>
           <TableCell align="left">Position</TableCell>
+          <TableCell align="left">Start Date</TableCell>
+          <TableCell align="left">Favourite Color</TableCell>
+          <TableCell align="left">Starting Salary</TableCell>
+          <TableCell align="left">Desired Salary</TableCell>
+          <TableCell align="left">Difference</TableCell>
           <TableCell align="left"></TableCell>
         </TableRow>
       </TableHead>
@@ -27,6 +32,11 @@ const EmployeeTable = ({ employees, onDelete }) => (
                 <TableCell align="left">{employee.name}</TableCell>
                 <TableCell align="left">{employee.level}</TableCell>
                 <TableCell align="left">{employee.position}</TableCell>
+                <TableCell align="left">{employee.startingDate}</TableCell>
+                <TableCell align="left">{employee.favouriteColor}</TableCell>
+                <TableCell align="left">{employee.startingSalary}$</TableCell>
+                <TableCell align="left">{employee.desiredSalary}$</TableCell>
+                <TableCell align="left">{employee.desiredSalary - employee.startingSalary}$</TableCell>
                 <TableCell align="left">
                   <Link to={`/update/${employee._id}`}>
                     <Button variant="outlined">Update</Button>

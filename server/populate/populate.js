@@ -4,10 +4,13 @@ Loading the .env file and creates environment variables from it
 require("dotenv").config();
 const mongoose = require("mongoose");
 const names = require("./names.json");
+const desiredsalaries = require("./desired.json")
+const salaries = require("./salary.json")
 const levels = require("./levels.json");
+const starts = require("./starts.json")
+const colors = require("./colors.json")
 const positions = require("./positions.json");
 const EmployeeModel = require("../db/employee.model");
-
 const mongoUrl = process.env.MONGO_URL;
 
 if (!mongoUrl) {
@@ -24,6 +27,10 @@ const populateEmployees = async () => {
     name,
     level: pick(levels),
     position: pick(positions),
+    favouriteColor: pick(colors),
+    startingDate: pick(starts),
+    startingSalary: pick(salaries),
+    desiredSalary : pick(desiredsalaries),
   }));
 
   await EmployeeModel.create(...employees);
