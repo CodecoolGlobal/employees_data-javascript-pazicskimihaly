@@ -58,6 +58,17 @@ const EmployeeForm = ({ onSave, disabled, employee, onCancel }) => {
         />
       </FormControl>
 
+      <FormControl fullWidth>
+        <TextField
+          defaultValue={employee ? employee.salary : null}
+          type="number"
+          name="salary"
+          id="salary"
+          label="Salary"
+          variant="outlined"
+        />
+      </FormControl>
+
       <div>
         <Button
           sx={{ marginRight: "1rem" }}

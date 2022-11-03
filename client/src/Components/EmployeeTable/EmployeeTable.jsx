@@ -17,6 +17,7 @@ const EmployeeTable = ({ employees, onDelete }) => (
           <TableCell align="left">Name</TableCell>
           <TableCell align="left">Level</TableCell>
           <TableCell align="left">Position</TableCell>
+          <TableCell align="left">Salary</TableCell>
           <TableCell align="left"></TableCell>
         </TableRow>
       </TableHead>
@@ -27,6 +28,7 @@ const EmployeeTable = ({ employees, onDelete }) => (
                 <TableCell align="left">{employee.name}</TableCell>
                 <TableCell align="left">{employee.level}</TableCell>
                 <TableCell align="left">{employee.position}</TableCell>
+                <TableCell align="left">{employee.salary}</TableCell>
                 <TableCell align="left">
                   <Link to={`/update/${employee._id}`}>
                     <Button variant="outlined">Update</Button>

@@ -3,6 +3,11 @@ const EmployeeModel = require("../db/employee.model");
 
 const employeesRouter = new Router();
 
+employeesRouter.get("/top-paid", async (req, res) => {
+  const employees = await EmployeeModel.find().sort({ salary: "desc" });
+  return res.json(employees.slice(0,3));
+});
+
 employeesRouter.use("/:id", async (req, res, next) => {
   let employee = null;
 
@@ -24,7 +29,7 @@ employeesRouter.get("/", async (req, res) => {
   const employees = await EmployeeModel.find().sort({ created: "desc" });
   return res.json(employees);
 });
-
+      
 employeesRouter.get("/:id", (req, res) => {
   return res.json(req.employee);
 });

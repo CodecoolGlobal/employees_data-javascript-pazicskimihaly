@@ -7,6 +7,7 @@ import reportWebVitals from "./reportWebVitals";
 import EmployeeList from "./Pages/EmployeeList";
 import EmployeeCreator from "./Pages/EmployeeCreator";
 import EmployeeUpdater from "./Pages/EmployeeUpdater";
+import TopEmployees from "./Pages/TopEmployees";
 
 import "./index.css";
 import "@fontsource/roboto/300.css";
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "/update/:id",
         element: <EmployeeUpdater />,
+      },
+      {
+        path: "/top-paid",
+        element: <TopEmployees />
       },
     ],
   },
