@@ -72,6 +72,7 @@ const EmployeeForm = ({ onSave, disabled, employee, onCancel }) => {
       <FormControl fullWidth>
         <TextField
           defaultValue={employee ? employee.favouriteColor : null}
+          type="color"
           name="favouriteColor"
           id="favouriteColor"
           label="Favourite Color"
