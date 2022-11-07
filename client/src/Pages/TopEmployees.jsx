@@ -1,7 +1,7 @@
 function TopEmployees() {
     const fetchTopEmployees = (signal) => {
         let Paid = fetch("/api/top-paid", { signal }).then((res) => res.json());
-        console.log(Paid)
+        Paid.then(console.log(Paid))
     };
     fetchTopEmployees()
 }
