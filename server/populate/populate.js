@@ -7,6 +7,7 @@ const names = require("./names.json");
 const levels = require("./levels.json");
 const positions = require("./positions.json");
 const EmployeeModel = require("../db/employee.model");
+const ToolModel = require("../db/tools.model")
 
 const mongoUrl = process.env.MONGO_URL;
 
