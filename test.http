@@ -1,4 +1,4 @@
-GET http://localhost:8080/api/employees/top-paid
+GET http://localhost:8080/api/top-paid
 
 ###
 GET http://localhost:8080/api/employees/
