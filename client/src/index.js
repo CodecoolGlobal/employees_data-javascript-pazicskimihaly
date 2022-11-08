@@ -15,6 +15,7 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import Layout from "./Pages/Layout";
 import ErrorPage from "./Pages/ErrorPage";
+import ToolList from "./Pages/ToolsList";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "/update/:id",
         element: <EmployeeUpdater />,
+      },
+      {
+        path: "/tools",
+        element: <ToolList />
       },
     ],
   },

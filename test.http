@@ -1,6 +1,10 @@
 GET http://localhost:8080/api/employees/
 
 ###
+
+GET http://localhost:8080/api/tools/
+
+###
 POST http://localhost:8080/api/employees/
 Content-Type: application/json
 
