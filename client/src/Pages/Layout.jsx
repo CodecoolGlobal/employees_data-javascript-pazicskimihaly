@@ -18,6 +18,11 @@ const Layout = () => {
               Create Employee
             </Button>
           </Link>
+          <Link to="/create/company">
+            <Button variant="contained" color="secondary">
+              Create Company
+            </Button>
+          </Link>
         </Toolbar>
       </AppBar>
       <Outlet />

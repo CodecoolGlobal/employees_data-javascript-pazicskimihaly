@@ -7,6 +7,7 @@ const names = require("./names.json");
 const levels = require("./levels.json");
 const positions = require("./positions.json");
 const EmployeeModel = require("../db/employee.model");
+const CompanyModel = require("../db/company.model")
 
 const mongoUrl = process.env.MONGO_URL;
 
@@ -30,10 +31,29 @@ const populateEmployees = async () => {
   console.log("Employees created");
 };
 
+const populateCompanies = async () => {
+  await CompanyModel.deleteMany({});
+
+  await CompanyModel.create(
+    {
+      name : "Cat Kft"
+    },
+    {
+      name : "Dog Kft"
+    },
+    {
+      name : "Rat Kft"
+    }
+  );
+  console.log("Companies Created");
+};
+
 const main = async () => {
   await mongoose.connect(mongoUrl);
 
   await populateEmployees();
+
+  await populateCompanies()
 
   await mongoose.disconnect();
 };

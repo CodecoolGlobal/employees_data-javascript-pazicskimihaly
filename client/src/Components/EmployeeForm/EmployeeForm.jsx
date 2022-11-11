@@ -2,8 +2,29 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import FormControl from "@mui/material/FormControl";
 import Button from "@mui/material/Button";
+import { useEffect } from "react";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
+
+const fetchCompany = () => {
+  return fetch(`/api/companies/`).then((res) => res.json());
+};
 
 const EmployeeForm = ({ onSave, disabled, employee, onCancel }) => {
+  const { id } = useParams();
+  const [company, setCompany] = useState(null);
+
+  useEffect(() => {
+    ;
+    fetchCompany(id)
+      .then((company) => {
+        setCompany(company);
+      })
+      .catch((error) => {
+        throw error;
+      });
+  }, [id]);;
+
   const onSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -47,6 +68,15 @@ const EmployeeForm = ({ onSave, disabled, employee, onCancel }) => {
           variant="outlined"
         />
       </FormControl>
+
+      <select>
+        {company && company.length ?
+          company.map(() => {
+            return (
+              <option key={company._id} value={name}> {name} </option>
+            )
+          }) : null}
+      </select>
 
       <FormControl fullWidth>
         <TextField
