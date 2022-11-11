@@ -10,21 +10,41 @@ const createCompany = (company) => {
   }).then((res) => res.json());
 };
 
+const fetchCompanies = (signal) => {
+  return fetch("/api/companies", { signal }).then((res) => res.json());
+};
+
 const CompanyCreator = () => {
   const [inputData, setInputData] = useState("")
+  const [companyData, setCompanyData] = useState("")
 
-  const onCreateCompany = () =>{
+  fetchCompanies()
+    .then((company) => {
+      setCompanyData(company);
+    })
+
+  const onCreateCompany = () => {
     const newCompany = {
-        name : inputData,
+      name: inputData,
     }
     createCompany(newCompany)
   }
 
   return (
     <div>
-        <input type="text" onChange={(e) => {setInputData(e.target.value)}}></input>
+      <p>{ companyData && companyData.length ?
+        companyData.map((company) => {
+          return (
+            <li key={company._id}>{company.name}</li>
+          )
+        }) : null}
+      </p>
+      <div>
+        <input type="text" onChange={(e) => { setInputData(e.target.value) }}></input>
         <button onClick={onCreateCompany}>Submit</button>
+      </div>
     </div>
+
   );
 };
 

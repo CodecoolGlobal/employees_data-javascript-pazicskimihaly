@@ -73,7 +73,11 @@ const EmployeeForm = ({ onSave, disabled, employee, onCancel }) => {
         {company && company.length ?
           company.map((companies) => {
             return (
-              <option key={companies._id} value={companies.name}> {companies.name} </option>
+              <option
+                key={companies._id}
+                value={companies.name}
+                defaultValue={employee ? employee.company : null}
+              > {companies.name} </option>
             )
           }) : null}
       </select>

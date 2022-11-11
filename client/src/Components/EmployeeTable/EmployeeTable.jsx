@@ -17,31 +17,34 @@ const EmployeeTable = ({ employees, onDelete }) => (
           <TableCell align="left">Name</TableCell>
           <TableCell align="left">Level</TableCell>
           <TableCell align="left">Position</TableCell>
+          <TableCell align="left">Company</TableCell>
           <TableCell align="left"></TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
         {employees && employees.length
           ? employees.map((employee) => (
-              <TableRow key={employee._id}>
-                <TableCell align="left">{employee.name}</TableCell>
-                <TableCell align="left">{employee.level}</TableCell>
-                <TableCell align="left">{employee.position}</TableCell>
-                <TableCell align="left">
-                  <Link to={`/update/${employee._id}`}>
-                    <Button variant="outlined">Update</Button>
-                  </Link>
-                  <Button
-                    onClick={() => onDelete(employee._id)}
-                    startIcon={<DeleteIcon />}
-                    variant="outlined"
-                    color="warning"
-                  >
-                    Delete
-                  </Button>
-                </TableCell>
-              </TableRow>
-            ))
+            <TableRow key={employee._id}>
+              <TableCell align="left">{employee.name}</TableCell>
+              <TableCell align="left">{employee.level}</TableCell>
+              <TableCell align="left">{employee.position}</TableCell>
+              <TableCell align="left">{employee.company}</TableCell>
+
+              <TableCell align="left">
+                <Link to={`/update/${employee._id}`}>
+                  <Button variant="outlined">Update</Button>
+                </Link>
+                <Button
+                  onClick={() => onDelete(employee._id)}
+                  startIcon={<DeleteIcon />}
+                  variant="outlined"
+                  color="warning"
+                >
+                  Delete
+                </Button>
+              </TableCell>
+            </TableRow>
+          ))
           : null}
       </TableBody>
     </Table>
