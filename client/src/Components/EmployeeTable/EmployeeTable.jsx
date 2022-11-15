@@ -23,25 +23,25 @@ const EmployeeTable = ({ employees, onDelete }) => (
       <TableBody>
         {employees && employees.length
           ? employees.map((employee) => (
-              <TableRow key={employee._id}>
-                <TableCell align="left">{employee.name}</TableCell>
-                <TableCell align="left">{employee.level}</TableCell>
-                <TableCell align="left">{employee.position}</TableCell>
-                <TableCell align="left">
-                  <Link to={`/update/${employee._id}`}>
-                    <Button variant="outlined">Update</Button>
-                  </Link>
-                  <Button
-                    onClick={() => onDelete(employee._id)}
-                    startIcon={<DeleteIcon />}
-                    variant="outlined"
-                    color="warning"
-                  >
-                    Delete
-                  </Button>
-                </TableCell>
-              </TableRow>
-            ))
+            <TableRow key={employee._id}>
+              <TableCell align="left">{employee.name}</TableCell>
+              <TableCell align="left">{employee.level}</TableCell>
+              <TableCell align="left">{employee.position}</TableCell>
+              <TableCell align="left">
+                <Link to={`/update/${employee._id}`}>
+                  <Button variant="outlined">Update</Button>
+                </Link>
+                <Button
+                  onClick={() => { if (window.confirm("Would you like to delete this employee?")) { onDelete(employee._id) } else { alert("Cancelled") } }}
+                  startIcon={<DeleteIcon />}
+                  variant="outlined"
+                  color="warning"
+                >
+                  Delete
+                </Button>
+              </TableCell>
+            </TableRow>
+          ))
           : null}
       </TableBody>
     </Table>
