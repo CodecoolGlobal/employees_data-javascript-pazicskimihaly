@@ -75,7 +75,7 @@ const EmployeeForm = ({ onSave, disabled, employee, onCancel }) => {
             return (
               <option
                 key={companies._id}
-                value={companies.name}
+                value={companies._id}
                 defaultValue={employee ? employee.company : null}
               > {companies.name} </option>
             )
