@@ -2,6 +2,13 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import FormControl from "@mui/material/FormControl";
 import Button from "@mui/material/Button";
+import { useEffect, useState } from "react";
+
+const fetchPositions = () => {
+  return fetch("/api/positions").then((res) => res.json());
+};
+
+
 
 const EmployeeForm = ({ onSave, disabled, employee, onCancel }) => {
   const onSubmit = (e) => {
@@ -17,6 +24,24 @@ const EmployeeForm = ({ onSave, disabled, employee, onCancel }) => {
 
     return onSave(employee);
   };
+
+  const [data, setData] = useState(null);
+  useEffect(() => {
+    const controller = new AbortController();
+
+    fetchPositions(controller.signal)
+      .then((positions) => {
+        setData(positions);
+      })
+      .catch((error) => {
+        if (error.name !== "AbortError") {
+          setData(null);
+          throw error;
+        }
+      })
+
+    return () => controller.abort();
+  }, []);
 
   return (
     <Box
@@ -49,13 +74,13 @@ const EmployeeForm = ({ onSave, disabled, employee, onCancel }) => {
       </FormControl>
 
       <FormControl fullWidth>
-        <TextField
-          defaultValue={employee ? employee.position : null}
-          name="position"
-          id="position"
-          label="Position"
-          variant="outlined"
-        />
+        <select name="position" id="position">
+        {data && data.length ? data.map((value) => {
+          return (
+            <option>{value.name}</option>
+          )
+        }) : null}
+        </select>
       </FormControl>
 
       <div>

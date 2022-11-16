@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const employeesRouter = require("./routes/employees.router");
+const positionsRouter = require("./routes/positions.router")
 
 const { MONGO_URL, PORT = 8080 } = process.env;
 
@@ -15,6 +16,7 @@ const app = express();
 app.use(express.json());
 
 app.use("/api/employees", employeesRouter);
+app.use("/api/positions", positionsRouter);
 
 const main = async () => {
   await mongoose.connect(MONGO_URL);

@@ -15,6 +15,7 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import Layout from "./Pages/Layout";
 import ErrorPage from "./Pages/ErrorPage";
+import PositionList from "./Pages/PositionList";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
         path: "/update/:id",
         element: <EmployeeUpdater />,
       },
+      {
+        path: "/positions",
+        element: <PositionList />
+      }
     ],
   },
 ]);
