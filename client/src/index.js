@@ -7,6 +7,7 @@ import reportWebVitals from "./reportWebVitals";
 import EmployeeList from "./Pages/EmployeeList";
 import EmployeeCreator from "./Pages/EmployeeCreator";
 import EmployeeUpdater from "./Pages/EmployeeUpdater";
+import KittenUpdater from "./Pages/KittenUpdater"
 
 import "./index.css";
 import "@fontsource/roboto/300.css";
@@ -15,6 +16,7 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import Layout from "./Pages/Layout";
 import ErrorPage from "./Pages/ErrorPage";
+import ToolsList from "./Pages/ToolsList"
 
 const router = createBrowserRouter([
   {
@@ -34,6 +36,14 @@ const router = createBrowserRouter([
         path: "/update/:id",
         element: <EmployeeUpdater />,
       },
+      {
+        path: "/tools",
+        element: <ToolsList />,
+      },
+      {
+        path: "/kittens/:id",
+        element: <KittenUpdater />,
+      }
     ],
   },
 ]);
