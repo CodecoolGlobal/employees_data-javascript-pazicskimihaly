@@ -15,6 +15,9 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import Layout from "./Pages/Layout";
 import ErrorPage from "./Pages/ErrorPage";
+import ToolList from "./Pages/ToolList";
+import TopPaidList from "./Pages/TopPaidList";
+import KittenUpdater from "./Pages/KittenUpdater";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +37,18 @@ const router = createBrowserRouter([
         path: "/update/:id",
         element: <EmployeeUpdater />,
       },
+      {
+        path: "/tools",
+        element: <ToolList />
+      },
+      {
+        path: "/top-paid",
+        element: <TopPaidList/>
+      },
+      {
+        path: "/kittens/:id",
+        element: <KittenUpdater/>
+      }
     ],
   },
 ]);

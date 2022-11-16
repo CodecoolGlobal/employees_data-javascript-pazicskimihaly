@@ -6,7 +6,12 @@ const mongoose = require("mongoose");
 const names = require("./names.json");
 const levels = require("./levels.json");
 const positions = require("./positions.json");
+const dates = require("./dates.json")
+const colors = require("./colors.json")
+const toolNames = require("./tools.json")
 const EmployeeModel = require("../db/employee.model");
+const ToolModel = require("../db/tool.model")
+const cats = require("./kitties.json")
 
 const mongoUrl = process.env.MONGO_URL;
 
@@ -24,16 +29,38 @@ const populateEmployees = async () => {
     name,
     level: pick(levels),
     position: pick(positions),
+    startingDate: pick(dates),
+    currentSalary: Math.floor(Math.random()*4000) + 5000,
+    desiredSalary: Math.floor(Math.random()*1000) + 9000,
+    favouriteColor: pick(colors),
+    kittens: [{
+      name: pick(cats),
+      weight: Math.floor(Math.random()*10) + 2
+    }]
   }));
 
   await EmployeeModel.create(...employees);
   console.log("Employees created");
 };
 
+const populateTools = async () => {
+  await ToolModel.deleteMany({});
+
+  const tools = toolNames.map(() => ({
+    name : pick(toolNames),
+    weight : Math.floor(Math.random()*5) + 5
+  }));
+
+  await ToolModel.create(...tools);
+  console.log("Tools Created");
+};
+
 const main = async () => {
   await mongoose.connect(mongoUrl);
 
   await populateEmployees();
+
+  await populateTools()
 
   await mongoose.disconnect();
 };
