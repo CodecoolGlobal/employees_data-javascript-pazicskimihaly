@@ -18,6 +18,11 @@ const Layout = () => {
               Create Employee
             </Button>
           </Link>
+          <Link to="/top-paid">
+            <Button variant="contained" color="secondary">
+              Top 3 Most Paid Employees
+            </Button>
+          </Link>
         </Toolbar>
       </AppBar>
       <Outlet />

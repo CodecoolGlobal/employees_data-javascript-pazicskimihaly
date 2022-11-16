@@ -17,6 +17,11 @@ const EmployeeTable = ({ employees, onDelete }) => (
           <TableCell align="left">Name</TableCell>
           <TableCell align="left">Level</TableCell>
           <TableCell align="left">Position</TableCell>
+          <TableCell align="left">Starting Date</TableCell>
+          <TableCell align="left">Current Salary</TableCell>
+          <TableCell align="left">Desired Salary</TableCell>
+          <TableCell align="left">Favourite Color</TableCell>
+          <TableCell align="left">Salary Difference</TableCell>
           <TableCell align="left"></TableCell>
         </TableRow>
       </TableHead>
@@ -27,12 +32,17 @@ const EmployeeTable = ({ employees, onDelete }) => (
                 <TableCell align="left">{employee.name}</TableCell>
                 <TableCell align="left">{employee.level}</TableCell>
                 <TableCell align="left">{employee.position}</TableCell>
+                <TableCell align="left">{employee.startingDate}</TableCell>
+                <TableCell align="left">{employee.currentSalary} $</TableCell>
+                <TableCell align="left">{employee.desiredSalary} $</TableCell>
+                <TableCell sx={{ backgroundColor : employee.favouriteColor }} align="left">{employee.favouriteColor}</TableCell>
+                <TableCell align="left">{employee.desiredSalary - employee.currentSalary} $</TableCell>
                 <TableCell align="left">
                   <Link to={`/update/${employee._id}`}>
                     <Button variant="outlined">Update</Button>
                   </Link>
                   <Button
-                    onClick={() => onDelete(employee._id)}
+                    onClick={() => {if(window.confirm("Delete Employee?")) {onDelete(employee._id)} else {alert("Cancelled")}}}
                     startIcon={<DeleteIcon />}
                     variant="outlined"
                     color="warning"
